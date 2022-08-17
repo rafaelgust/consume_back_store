@@ -9,7 +9,7 @@ class HttpServiceDio implements HttpService {
   @override
   Future<dynamic> fetchGet(url) async {
     final response = await dio.get(url);
-    return response;
+    return response.data;
   }
 
   @override

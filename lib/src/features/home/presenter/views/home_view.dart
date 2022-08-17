@@ -7,11 +7,23 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => Modular.to.navigate('/auth/login'),
-          child: const Text('Login'),
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () => Modular.to.navigate('/auth/login'),
+              child: const Text('Login'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () => Modular.to.navigate('/users/all'),
+              child: const Text('Users'),
+            ),
+          ),
+        ],
       ),
     );
   }

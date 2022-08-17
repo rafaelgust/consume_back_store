@@ -51,7 +51,6 @@ class _LoginViewState extends State<LoginView> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const FlutterLogo(),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),

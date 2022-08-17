@@ -1,10 +1,16 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'controllers/auth_controller.dart';
 import 'views/login_view.dart';
 
 class AuthModule extends Module {
   @override
-  List<Bind<Object>> get binds => [];
+  List<Bind<Object>> get binds => [
+        Bind.singleton<AuthController>(
+          (i) => AuthController(i(), i()),
+          export: true,
+        ),
+      ];
 
   @override
   List<ModularRoute> get routes => [
