@@ -27,6 +27,11 @@ class _LoginViewState extends State<LoginView> {
     });
   }
 
+  void _errorSnack(String text) {
+    final snackBar = SnackBar(content: Text(text), backgroundColor: Colors.red);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   void _login() {
     final validate = controller.credentials.validate();
     if (validate == null) {
@@ -37,12 +42,6 @@ class _LoginViewState extends State<LoginView> {
     } else {
       _errorSnack(validate);
     }
-  }
-
-  void _errorSnack(String text) {
-    final snackBar = SnackBar(content: Text(text), backgroundColor: Colors.red);
-
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override

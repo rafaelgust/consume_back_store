@@ -13,16 +13,31 @@ class HttpServiceDio implements HttpService {
   }
 
   @override
-  Future<dynamic> tokenBasic(
-      {required String url, required String token}) async {
+  Future<dynamic> tokenBasic({
+    required String url,
+    required String token,
+  }) async {
     dio.options.headers['content-Type'] = 'application/json';
     dio.options.headers["authorization"] = "basic $token";
-
     try {
       final response = await dio.get('$urlBase$url');
       return response.data;
     } on DioError catch (e) {
-      return e.response?.statusCode;
+      String? statusCode = e.response?.statusCode.toString();
+      throw Exception([statusCode]);
+    }
+  }
+
+  @override
+  Future refreshToken(String refreshToken) async {
+    dio.options.headers['content-Type'] = 'application/json';
+    dio.options.headers["authorization"] = "bearer $refreshToken";
+    try {
+      final response = await dio.get('$urlBase/auth/refresh_token');
+      return response.data;
+    } on DioError catch (e) {
+      String? statusCode = e.response?.statusCode.toString();
+      throw Exception([statusCode]);
     }
   }
 }

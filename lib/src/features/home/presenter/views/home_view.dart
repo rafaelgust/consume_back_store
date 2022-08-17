@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () => Modular.to.navigate('/auth/login'),
-          child: Text('Login'),
+          child: const Text('Login'),
         ),
       ),
     );
